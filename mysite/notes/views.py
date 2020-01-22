@@ -7,7 +7,7 @@ from .forms import NoteForm
 # Create your views here.
 
 def home(request):
-    notes = Note.objects
+    notes = Note.objects.all()
     template = loader.get_template('note.html')
     form = NoteForm(request.POST or None)
     if form.is_valid():
@@ -15,5 +15,6 @@ def home(request):
         save_it.save()
 
     context = {'notes': notes, 'form': form}
-    return render(request, 'note.html', context)
+    return render(request, 'note.html', context=context)
+
 #return render_to_response("note.html", note

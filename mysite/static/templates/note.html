@@ -1,16 +1,23 @@
-<link href="http://codepen.io/edbond88/pen/CcgvA.css" media="screen" rel="stylesheet" type="text/css">
-<style>
-            body {<br />
-              background: rgba(222,222,222,1);<br />
-              margin: 20px;<br />
-            }<br />
-</style>
-<h1>Notes App</h1>
+<div style="background-image: url('https://venngage-wordpress.s3.amazonaws.com/uploads/2018/09/Minimalist-Crumpled-Paper-Simple-Background-Image.jpg');">
+<html>
+<link href="stylesheet.css" media="screen" rel="stylesheet" type="text/css">
+        <center><h1 style="color:grey; font-family:courier;">Notes App</h1>
+    </head>
+    <body>
+        <ul style="width:30em; margin:0 auto; font-family:courier; color:black; size: 2">
+              {% for note in notes.all %}
+                <li>{{ note.text }}</li>
+              {% endfor %}
+        </ul>
 
+        <form method="POST" action="http://127.0.0.1:8000/">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <td>&nbsp;</td>
+            <input type="submit" value="Add note" style=" font-family:courier;">
+        </form>
+        <button onclick="window.location.href = 'http://127.0.0.1:8000/admin/';" style=" font-family:courier;">Edit</button>
+    </body></center>
 
-<form method="POST" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <td>&nbsp;</td>
-<input type="submit" value="Add note">
-</form>
+</html>
+</div>
